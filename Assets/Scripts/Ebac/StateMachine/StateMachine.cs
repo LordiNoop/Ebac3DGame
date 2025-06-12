@@ -3,55 +3,43 @@ using System.Collections.Generic;
 using UnityEngine;
 using NaughtyAttributes;
 
-public class Test
+namespace Ebac.StateMachine
 {
-    public enum Test2
+    public class StateMachine<T> where T : System.Enum
     {
-        NONE
-    }
 
-    public void Aa()
-    {
-        StateMachine<Test2> stateMachine = new StateMachine<Test2>();
+        public Dictionary<T, StateBase> dictionaryState;
 
-        stateMachine.RegisterStates(Test.Test2.NONE, new StateBase());
-    }
-}
+        private StateBase _currentState;
+        public float timeToStartGame = 1f;
 
-public class StateMachine<T> where T : System.Enum
-{
+        public StateBase CurrentState
+        {
+            get { return _currentState; }
+        }
 
-    public Dictionary<T, StateBase> dictionaryState;
+        public void RegisterStates(T typeEnum, StateBase state)
+        {
+            dictionaryState.Add(typeEnum, state);
+        }
 
-    private StateBase _currentState;
-    public float timeToStartGame = 1f;
+        public void Update()
+        {
+            if (_currentState != null) _currentState.OnStateStay();
+        }
 
-    public StateBase CurrentState
-    {
-        get { return _currentState; }
-    }
+        public void Init()
+        {
+            dictionaryState = new Dictionary<T, StateBase>();
+        }
 
-    public void RegisterStates(T typeEnum, StateBase state)
-    {
-        dictionaryState.Add(typeEnum, state);
-    }
+        public void SwitchState(T state)
+        {
+            if (_currentState != null) _currentState.OnStateExit();
 
-    public void Update()
-    {
-        if (_currentState != null) _currentState.OnStateStay();
-    }
+            _currentState = dictionaryState[state];
 
-    public void Init()
-    {
-        dictionaryState = new Dictionary<T, StateBase>();
-    }
-
-    public void SwitchState(T state)
-    {
-        if (_currentState != null) _currentState.OnStateExit();
-
-        _currentState = dictionaryState[state];
-
-        _currentState.OnStateEnter();
+            _currentState.OnStateEnter();
+        }
     }
 }
