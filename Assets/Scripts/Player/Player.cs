@@ -5,6 +5,8 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] private PlayerStates playerStates;
+    
+    public Animator animator;
 
     public CharacterController characterController;
     public float speed = 1f; 
@@ -12,6 +14,10 @@ public class Player : MonoBehaviour
     public float gravity = 9.8f; 
     private float vSpeed = 0f;
     public float jumpSpeed = 15f;
+
+    [Header("Run Setup")]
+    public KeyCode keyRun = KeyCode.LeftShift;
+    public float speedRun = 1.5f;
 
     private void Update() 
     { 
@@ -31,7 +37,21 @@ public class Player : MonoBehaviour
         }
 
         vSpeed -= gravity * Time.deltaTime; 
-        speedVector.y = vSpeed; 
+        speedVector.y = vSpeed;
+
+        var isWalking = inputAxisVertical != 0;
+        if (isWalking)
+        {
+            if (Input.GetKey(keyRun))
+            {
+                speedVector *= speedRun;
+                animator.speed = speedRun;
+            }
+            else
+            {
+                animator.speed = 1;
+            }
+        }
 
         characterController.Move(speedVector * Time.deltaTime);
 
@@ -42,6 +62,15 @@ public class Player : MonoBehaviour
         else if (characterController.velocity.x == 0 && characterController.isGrounded || characterController.velocity.z == 0 && characterController.isGrounded)
         {
             playerStates.stateMachine.SwitchState(PlayerStates.PlayerMovementStates.IDLE);
+        }
+
+        if (inputAxisVertical != 0)
+        {
+            animator.SetBool("Run", true);
+        }
+        else
+        {
+            animator.SetBool("Run", false);
         }
     }
 }
