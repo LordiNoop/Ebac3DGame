@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using Animation;
+using Unity.VisualScripting;
 
 namespace Enemy
 {
@@ -14,8 +15,9 @@ namespace Enemy
         public ParticleSystem particleSystem;
 
         public float startLife = 10f;
+        public bool LookAtPlayer = false;
 
-        [SerializeField] private float _currentLife;
+        [SerializeField] protected float _currentLife;
 
         [Header("Animation")]
         [SerializeField] private AnimationBase _animationBase;
@@ -25,9 +27,24 @@ namespace Enemy
         public Ease startAnimationEase = Ease.OutBack;
         public bool startWithBornAnimation = true;
 
+        private Player _player;
+
         private void Awake()
         {
             Init();
+        }
+
+        private void Start()
+        {
+            _player = GameObject.FindObjectOfType<Player>();
+        }
+
+        public virtual void Update()
+        {
+            if (LookAtPlayer)
+            {
+                transform.LookAt(_player.transform.position);
+            }
         }
 
         protected void ResetLife()
@@ -88,15 +105,6 @@ namespace Enemy
 
         #endregion
 
-        //Debug
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.T))
-            {
-                OnDamage(5f);
-            }
-        }
-
         public void Damage(float damage)
         {
             OnDamage(damage);
@@ -106,6 +114,16 @@ namespace Enemy
         {
             OnDamage(damage);
             transform.DOMove(transform.position - dir, .1f);
+        }
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            Player p = collision.transform.GetComponent<Player>();
+
+            if (p != null)
+            {
+                p.Damage(1);
+            }
         }
     }
 }

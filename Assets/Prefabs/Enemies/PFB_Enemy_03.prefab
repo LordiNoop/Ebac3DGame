@@ -4900,6 +4900,7 @@ GameObject:
   - component: {fileID: 2687779540346419562}
   - component: {fileID: 2328036774014168233}
   - component: {fileID: 5327145267108417627}
+  - component: {fileID: 5813329726850322663}
   m_Layer: 0
   m_Name: PFB_Enemy_03
   m_TagString: Untagged
@@ -4936,9 +4937,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collider: {fileID: 2328036774014168233}
-  flashColor: {fileID: 0}
+  flashColor: {fileID: 6867945417440210188}
   particleSystem: {fileID: 4328366391541640257}
-  startLife: 10
+  startLife: 5
   _currentLife: 0
   _animationBase: {fileID: 5327145267108417627}
   startAnimationDuration: 0.2
@@ -4987,6 +4988,33 @@ MonoBehaviour:
     trigger: Attack
   - animationType: 4
     trigger: Death
+--- !u!54 &5813329726850322663
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 698289285446605863}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &3906348634709953897
 GameObject:
   m_ObjectHideFlags: 0
@@ -5011,7 +5039,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3906348634709953897}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
@@ -5019,7 +5047,7 @@ Transform:
   - {fileID: 7717475327488487255}
   - {fileID: 5685106358506067553}
   m_Father: {fileID: 2358772814638495105}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1001 &7579888328262690329
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5119,7 +5147,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meshRenderer: {fileID: 6822569431517785358}
-  color: {r: 1, g: 0, b: 0, a: 1}
+  skinnedMeshRenderer: {fileID: 0}
+  color: {r: 1, g: 1, b: 1, a: 1}
   duration: 0.1
 --- !u!4 &5685106358506067553 stripped
 Transform:
