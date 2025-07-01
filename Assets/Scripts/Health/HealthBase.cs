@@ -19,12 +19,21 @@ public class HealthBase : MonoBehaviour, IDamageable
         Init();
     }
 
+    private void Update()
+    {
+        if (this.transform.position.y < -100 && _currentLife > 0)
+        {
+            _currentLife = 0;
+            Damage(0);
+        }
+    }
+
     public void Init()
     {
         ResetLife();
     }
 
-    protected void ResetLife()
+    public void ResetLife()
     {
         _currentLife = startLife;
     }
@@ -61,7 +70,7 @@ public class HealthBase : MonoBehaviour, IDamageable
         Damage(damage);
     }
 
-    private void UpdateUI()
+    public void UpdateUI()
     {
         if (uiFillUpdater != null)
         {
