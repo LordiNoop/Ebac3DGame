@@ -10,11 +10,17 @@ public class BossSpawn : MonoBehaviour
 
     private bool _hasSpawned = false;
 
+    private void Awake()
+    {
+        boss.SetActive(false);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (!_hasSpawned)
         {
-            Instantiate(boss, bossSpawnLocation.position, bossSpawnLocation.rotation);
+            boss.SetActive(true);
+            //Instantiate(boss, bossSpawnLocation.position, bossSpawnLocation.rotation);
 
             _hasSpawned = true;
         }
