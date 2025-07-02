@@ -12,6 +12,15 @@ namespace Itens
 
         public Image uiIcon;
         public TextMeshProUGUI uiValue;
+        public Image uiKey;
+
+        private void Start()
+        {
+            if (_currSetup.uiKey == null)
+            {
+                uiKey.enabled = false;
+            }
+        }
 
         private void Update()
         {
