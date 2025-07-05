@@ -8,6 +8,7 @@ TagManager:
   - Ground
   - Enemy
   - AmmoUI
+  - Coin
   layers:
   - Default
   - TransparentFX
