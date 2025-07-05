@@ -12,6 +12,8 @@ public class EffectsManager : Singleton<EffectsManager>
 
     public float duration = 1.0f;
 
+    public ColorParameter standardColor;
+
     [NaughtyAttributes.Button]
     public void ChangeVignette()
     {
@@ -34,7 +36,7 @@ public class EffectsManager : Singleton<EffectsManager>
         {
             time += Time.deltaTime;
 
-            c.value = Color.Lerp(Color.black, Color.red, time / duration);
+            c.value = Color.Lerp(standardColor, Color.red, time / duration);
 
             _vignette.color.Override(c);
 
@@ -47,7 +49,7 @@ public class EffectsManager : Singleton<EffectsManager>
         {
             time += Time.deltaTime;
 
-            c.value = Color.Lerp(Color.red, Color.black, time / duration);
+            c.value = Color.Lerp(Color.red, standardColor, time / duration);
 
             _vignette.color.Override(c);
 
