@@ -15,12 +15,22 @@ namespace Itens
 
         protected bool _collected = false;
 
+        public Collider coll;
+
         [Header("Sounds")]
         public AudioSource audioSource;
 
         private void Awake()
         {
             //if (particleSystem != null) particleSystem.transform.SetParent(null);
+        }
+
+        private void Update()
+        {
+            if (GetComponent<Magnetic>() != null)
+            {
+                coll.enabled = false;
+            }
         }
 
         private void OnTriggerEnter(Collider other)

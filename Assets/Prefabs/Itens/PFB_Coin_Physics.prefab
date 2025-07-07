@@ -53,6 +53,7 @@ MonoBehaviour:
   particleSyst: {fileID: 0}
   timeToHide: 1
   graphicItem: {fileID: 8508704101060323693}
+  coll: {fileID: 1502584925240871208}
   audioSource: {fileID: 0}
 --- !u!135 &989807382807356271
 SphereCollider:
