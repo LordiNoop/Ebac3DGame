@@ -12,11 +12,12 @@ namespace Cloth
         public Texture2D texture;
         public string shaderIdName = "_EmissionMap";
 
-        private Texture2D _defaultTexture;
+        public Texture2D defaultTexture;
 
         private void Awake()
         {
-            _defaultTexture = (Texture2D) mesh.sharedMaterials[0].GetTexture(shaderIdName);
+            //_defaultTexture = (Texture2D) mesh.sharedMaterials[0].GetTexture(shaderIdName);
+            ResetTexture();
         }
 
         [NaughtyAttributes.Button]
@@ -32,7 +33,7 @@ namespace Cloth
 
         public void ResetTexture()
         {
-            mesh.sharedMaterials[0].SetTexture(shaderIdName, _defaultTexture);
+            mesh.sharedMaterials[0].SetTexture(shaderIdName, defaultTexture);
         }
     }
 }
