@@ -27,7 +27,7 @@ namespace Itens
 
         private void Update()
         {
-            if (GetComponent<Magnetic>() != null)
+            if (GetComponent<Magnetic>() != null && coll != null)
             {
                 coll.enabled = false;
             }
