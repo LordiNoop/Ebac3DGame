@@ -16,6 +16,18 @@ public class GunShootLimit : GunBase
     private void Awake()
     {
         GetAllUIs();
+        maxShoot = 10f;
+    }
+
+    private void Start()
+    {
+        for (int i = 0; i < uiFillUpdaters.Count; i++)
+        {
+            if (uiFillUpdaters[i].gameObject.tag != "AmmoUI")
+            {
+                uiFillUpdaters.Remove(uiFillUpdaters[i]);
+            }
+        }
     }
 
     protected override IEnumerator ShootCoroutine()

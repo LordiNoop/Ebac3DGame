@@ -13,7 +13,7 @@ public class HealthBase : MonoBehaviour, IDamageable
     public Action<HealthBase> OnDamage;
     public Action<HealthBase> OnKill;
 
-    public UIFillUpdater uiFillUpdater;
+    public List<UIFillUpdater> uiFillUpdaters;
 
     public float damageMultiply = 1;
 
@@ -75,9 +75,12 @@ public class HealthBase : MonoBehaviour, IDamageable
 
     public void UpdateUI()
     {
-        if (uiFillUpdater != null)
+        for (int i = 0; i < uiFillUpdaters.Count; i++)
         {
-            uiFillUpdater.UpdateValue((float)_currentLife / startLife);
+            if (uiFillUpdaters[i] != null)
+            {
+                uiFillUpdaters[i].UpdateValue((float)_currentLife / startLife);
+            }
         }
     }
 

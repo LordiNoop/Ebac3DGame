@@ -25,7 +25,7 @@ public class ActionLifePack : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(keyCode))
+        if (Input.GetKeyDown(keyCode) || Input.GetKeyDown(KeyCode.F))
         {
             RecoverLife();
         }

@@ -81,7 +81,7 @@ MonoBehaviour:
   healthBase: {fileID: 3355617091259727913}
   shakeDuration: 0.1
   shakeForce: 0.3
-  dropCoinsAmount: 3
+  dropCoinsAmount: 2
   coinPrefab: {fileID: 6613827598390442599, guid: 8586af69b33c4124dbca452a9f0ed14c, type: 3}
   dropPosition: {fileID: 49755539744253187}
 --- !u!114 &3355617091259727913
@@ -96,10 +96,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 097629f7bdb45664b92ca10c0d3c75fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startLife: 50
+  startLife: 25
   destroyOnKill: 1
   _currentLife: 0
-  uiFillUpdater: {fileID: 0}
+  uiFillUpdaters: []
+  damageMultiply: 1
 --- !u!65 &5010371578952405228
 BoxCollider:
   m_ObjectHideFlags: 0
