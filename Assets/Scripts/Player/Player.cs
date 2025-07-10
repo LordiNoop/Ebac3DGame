@@ -35,11 +35,6 @@ public class Player : Singleton<Player>//, IDamageable
     private bool _alive = true;
     private bool _jumping = false;
 
-    private void Start()
-    {
-        Cursor.visible = false;
-    }
-
     private void OnValidate()
     {
         if (healthBase == null) healthBase = GetComponent<HealthBase>();
@@ -52,6 +47,13 @@ public class Player : Singleton<Player>//, IDamageable
 
         healthBase.OnDamage += Damage;
         healthBase.OnKill += OnKill;
+
+        LoadPlayerPosition();
+    }
+
+    private void LoadPlayerPosition()
+    {
+        transform.position = SaveManager.Instance.Setup.playerPosition;
     }
 
     private void Update() 

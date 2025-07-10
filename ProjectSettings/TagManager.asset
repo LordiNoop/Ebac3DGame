@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - AmmoUI
   - Coin
+  - Spawn
   layers:
   - Default
   - TransparentFX

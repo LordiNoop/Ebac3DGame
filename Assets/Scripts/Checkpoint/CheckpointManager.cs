@@ -19,6 +19,7 @@ public class CheckpointManager : Singleton<CheckpointManager>
         if (i > lastCheckPointKey)
         {
             lastCheckPointKey = i;
+            SaveManager.Instance.SaveLastCheckpoint();
         }
     }
 

@@ -2,7 +2,9 @@ using Cloth;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HealthBase : MonoBehaviour, IDamageable
 {
@@ -17,9 +19,26 @@ public class HealthBase : MonoBehaviour, IDamageable
 
     public float damageMultiply = 1;
 
+
+
     private void Awake()
     {
         Init();
+    }
+
+    private void Start()
+    {
+        LoadPlayerHealth();
+        SaveManager.Instance.healthBase = GameObject.FindWithTag("Player").GetComponent<HealthBase>();
+    }
+
+    private void LoadPlayerHealth()
+    {
+        if (gameObject.CompareTag("Player"))
+        {
+            _currentLife = SaveManager.Instance.Setup.life;
+            UpdateUI();
+        }
     }
 
     private void Update()
@@ -34,6 +53,11 @@ public class HealthBase : MonoBehaviour, IDamageable
     public void Init()
     {
         ResetLife();
+    }
+
+    public float Life
+    {
+        get { return _currentLife; }
     }
 
     public void ResetLife()
