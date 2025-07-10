@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Ebac.Core.Singleton;
+using UnityEngine.Audio;
 
 public class SFXPool : Singleton<SFXPool>
 {
     private List<AudioSource> _audioSourceList;
+    public AudioMixerGroup sfxGroup;
 
     public int poolSize = 10;
 
@@ -25,6 +27,8 @@ public class SFXPool : Singleton<SFXPool>
         {
             CreateAudioSourceItem();
         }
+
+        _audioSourceList.ForEach(i  => i.outputAudioMixerGroup = sfxGroup);
     }
 
     private void CreateAudioSourceItem()
