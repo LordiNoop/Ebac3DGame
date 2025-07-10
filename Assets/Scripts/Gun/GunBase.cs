@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GunBase : MonoBehaviour
 {
+    public SFXType sfxType = SFXType.NONE;
+
     public ProjectileBase prefabProjectile;
 
     public Transform positionToShoot;
@@ -21,8 +23,14 @@ public class GunBase : MonoBehaviour
         }
     }
 
+    private void PlaySFX()
+    {
+        SFXPool.Instance.Play(sfxType);
+    }
+
     public virtual void Shoot()
     {
+        PlaySFX();
         var projectile = Instantiate(prefabProjectile);
         projectile.transform.position = positionToShoot.position;
         projectile.transform.rotation = positionToShoot.rotation;

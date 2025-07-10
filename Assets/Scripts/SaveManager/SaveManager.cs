@@ -19,7 +19,7 @@ public class SaveManager : Singleton<SaveManager>
 
     public HealthBase healthBase;
 
-    public Vector3 spawnPlayerPosition = new Vector3(423f, -6.8f, 39f);
+    public Vector3 spawnPlayerPosition;
 
     protected override void Awake()
     {
@@ -42,7 +42,7 @@ public class SaveManager : Singleton<SaveManager>
         _saveSetup = new SaveSetup();
         _saveSetup.lastLevel = 0;
         _saveSetup.playerName = "Cesar";
-        _saveSetup.playerPosition = spawnPlayerPosition;
+        _saveSetup.playerPosition = new Vector3(423f, -6.8f, 39f);
         _saveSetup.life = 25;
     }
 

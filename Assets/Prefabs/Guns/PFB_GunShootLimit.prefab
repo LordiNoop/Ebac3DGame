@@ -97,10 +97,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6161b0dc85bdb93418026287f42c6fb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sfxType: 2
   prefabProjectile: {fileID: 5398098964849930194, guid: 7e94fa81275d4084fb0bb996bf4f364e, type: 3}
   positionToShoot: {fileID: 5766064954011507612}
   timeBetweenShoot: 0.3
   speed: 50
+  uiFillUpdaters: []
   maxShoot: 5
   timeToRecharge: 1
 --- !u!1 &3644898249424047204

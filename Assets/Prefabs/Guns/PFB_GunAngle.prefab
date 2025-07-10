@@ -128,10 +128,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6ff024ba30510e4c8c2a71ca450a607, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sfxType: 2
   prefabProjectile: {fileID: 5398098964849930194, guid: 7e94fa81275d4084fb0bb996bf4f364e, type: 3}
   positionToShoot: {fileID: 2276643165236193955}
   timeBetweenShoot: 0.3
   speed: 50
+  uiFillUpdaters: []
   maxShoot: 5
   timeToRecharge: 1
   amountPerShoot: 4
